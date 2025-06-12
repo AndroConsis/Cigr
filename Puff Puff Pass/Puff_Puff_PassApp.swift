@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct Puff_Puff_PassApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
+    @AppStorage("isLoggedIn") private var isLoggedIn = false
+
+        var body: some Scene {
+            WindowGroup {
+                if isLoggedIn {
+                    HomeView()
+                } else {
+                    LoginView()
+                }
+            }
         }
-    }
 }
