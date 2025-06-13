@@ -21,7 +21,7 @@ struct ConsumptionData: Identifiable {
 }
 
 struct ConsumptionTrendsView: View {
-    @AppStorage("pricePerCigarette") private var pricePerCigarette: Double = 0.0
+    @AppStorage("pricePerCig") private var pricePerCigarette: Double = 0.0
     @AppStorage("cigaretteEntries") private var entryData: Data = Data()
     @State private var allEntries: [CigaretteEntry] = []
     @State private var selectedRange: TrendRange = .weekly
