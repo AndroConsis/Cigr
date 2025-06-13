@@ -9,20 +9,21 @@ import SwiftUI
 
 struct StatisticsView: View {
     var body: some View {
-        VStack {
-            Text("📊 Statistics")
-                .font(.largeTitle)
-                .bold()
-                .padding(.top)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 24) {
 
-            Spacer()
-            Text("Coming Soon: Health Insights, Trends, Forecasts")
-                .foregroundColor(.gray)
-                .padding()
+                // Section 1: Health Insights
+                HealthInsightsView()
 
-            Spacer()
+                // Section 2: Consumption Trends
+                ConsumptionTrendsView()
+
+                // Section 3: Forecast
+                ForecastView()
+
+            }
+            .padding()
         }
-        .padding()
         .navigationTitle("Statistics")
         .navigationBarTitleDisplayMode(.inline)
     }

@@ -21,6 +21,8 @@ struct HomeView: View {
     @AppStorage("userName") private var userName = ""
     @AppStorage("userEmail") private var userEmail = ""
     @AppStorage("joinDate") private var joinDate = ""
+    @AppStorage("lastSmokedTime") private var lastSmokedTime: Double = Date().timeIntervalSince1970
+
 
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     @State private var showProfile = false
@@ -85,6 +87,8 @@ struct HomeView: View {
                     let newEntry = CigaretteEntry(timestamp: Date())
                     allEntries.append(newEntry)
                     saveEntries()
+                    
+                    lastSmokedTime = newEntry.timestamp.timeIntervalSince1970
                 }) {
                     Text("Add Cigarette")
                         .font(.headline)
