@@ -55,32 +55,37 @@ struct ConsumptionTrendsView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text("📊 Consumption Trends")
-                .font(.title2)
-                .bold()
-                .padding(.top)
-
-            Picker("Range", selection: $selectedRange) {
-                ForEach(TrendRange.allCases, id: \.self) { range in
-                    Text(range.rawValue).tag(range)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("📊 Consumption Trends")
+                    .font(.title2)
+                    .bold()
+                    .padding(.top)
+                
+                Picker("Range", selection: $selectedRange) {
+                    ForEach(TrendRange.allCases, id: \.self) { range in
+                        Text(range.rawValue).tag(range)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal)
+                
+                VStack(alignment: .leading, spacing: 16) {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 8) {
+                            ChartSection(title: "Cigarettes Smoked", entries: groupedData.map {
+                                (label: $0.label, value: Double($0.count))
+                            }, color: .red)
+                            
+                            ChartSection(title: "Money Spent", entries: groupedData.map {
+                                (label: $0.label, value: $0.totalCost)
+                            }, color: .blue)
+                        }
+                        .padding()
+                    }
                 }
             }
-            .pickerStyle(.segmented)
-            .padding(.horizontal)
-
-            ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
-                    ChartSection(title: "Cigarettes Smoked", entries: groupedData.map {
-                        (label: $0.label, value: Double($0.count))
-                    }, color: .red)
-
-                    ChartSection(title: "Money Spent", entries: groupedData.map {
-                        (label: $0.label, value: $0.totalCost)
-                    }, color: .blue)
-                }
-                .padding()
-            }
+            .padding()
         }
         .onAppear {
             decodeEntries()
