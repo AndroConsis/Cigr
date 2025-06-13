@@ -47,14 +47,19 @@ struct HealthInsightsView: View {
                             .progressViewStyle(LinearProgressViewStyle(tint: .green))
                             .scaleEffect(x: 1, y: 2, anchor: .center)
 
-                        Text(String(format: "%.0f%% processed", processedPercent * 100))
+                        Text(String(format: "%.0f%% of nicotine has left your body", processedPercent * 100))
                             .font(.subheadline)
                             .foregroundColor(.secondary)
 
-                        Text("Your body is actively removing nicotine. Keep it up!")
+                        Text("The higher the number, the cleaner your system is becoming.")
                             .font(.caption)
                             .foregroundColor(.gray)
+
+                        Text("Nicotine has a half-life of ~2 hours. Staying smoke-free speeds up detox.")
+                            .font(.caption2)
+                            .foregroundColor(.gray)
                     }
+                    .padding(.top)
 
                     // Time Remaining Section
                     HStack(spacing: 12) {

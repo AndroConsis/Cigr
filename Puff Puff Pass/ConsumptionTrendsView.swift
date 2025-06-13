@@ -62,6 +62,30 @@ struct ConsumptionTrendsView: View {
                     .bold()
                     .padding(.top)
                 
+                if groupedData.isEmpty {
+                    VStack(spacing: 16) {
+                            Image(systemName: "chart.bar.doc.horizontal")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 80, height: 80)
+                                .foregroundColor(.gray)
+
+                            Text("Your cigarette and spending trends will show up here.")
+                                .font(.headline)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.primary)
+                                .padding(.horizontal, 20)
+
+                            Text("Once you start logging, you’ll see how your smoking habits evolve weekly or monthly, with clear insights into your total cost.")
+                                .font(.subheadline)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.secondary)
+                                .padding(.horizontal, 20)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding(.top, 60)
+                } else {
+                
                 Picker("Range", selection: $selectedRange) {
                     ForEach(TrendRange.allCases, id: \.self) { range in
                         Text(range.rawValue).tag(range)
@@ -70,18 +94,19 @@ struct ConsumptionTrendsView: View {
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
                 
-                VStack(alignment: .leading, spacing: 16) {
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 8) {
-                            ChartSection(title: "Cigarettes Smoked", entries: groupedData.map {
-                                (label: $0.label, value: Double($0.count))
-                            }, color: .red)
-                            
-                            ChartSection(title: "Money Spent", entries: groupedData.map {
-                                (label: $0.label, value: $0.totalCost)
-                            }, color: .blue)
+                    VStack(alignment: .leading, spacing: 16) {
+                        ScrollView {
+                            VStack(alignment: .leading, spacing: 8) {
+                                ChartSection(title: "Cigarettes Smoked", entries: groupedData.map {
+                                    (label: $0.label, value: Double($0.count))
+                                }, color: .red)
+                                
+                                ChartSection(title: "Money Spent", entries: groupedData.map {
+                                    (label: $0.label, value: $0.totalCost)
+                                }, color: .blue)
+                            }
+                            .padding()
                         }
-                        .padding()
                     }
                 }
             }
