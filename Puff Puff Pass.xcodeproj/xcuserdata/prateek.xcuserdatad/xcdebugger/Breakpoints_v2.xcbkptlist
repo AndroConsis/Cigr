@@ -3,4 +3,182 @@
    uuid = "AD19EFA9-2948-4003-B75A-549F0D321404"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58800C99-0ECD-479A-9D7C-96144BE15104"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/FutureForecastView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "FutureForecastView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "58800C99-0ECD-479A-9D7C-96144BE15104 - a6d9553d6f9cf1f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of Puff_Puff_Pass.FutureForecastView.storedEntriesData : Foundation.Data"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/FutureForecastView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  uuid = "58800C99-0ECD-479A-9D7C-96144BE15104 - d702ee56b5699df1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Puff_Puff_Pass.FutureForecastView.init() -&gt; Puff_Puff_Pass.FutureForecastView"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/FutureForecastView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "760BD278-FB47-4BBB-B4F2-642357F2098F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/FutureForecastView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "dailyAverage"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "760BD278-FB47-4BBB-B4F2-642357F2098F - caba4a15a61d5a29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Puff_Puff_Pass.FutureForecastView.dailyAverage.getter : Swift.Double"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/FutureForecastView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "182">
+               </Location>
+               <Location
+                  uuid = "760BD278-FB47-4BBB-B4F2-642357F2098F - 41619ecc6b048c5f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Puff_Puff_Pass.CigaretteEntry) -&gt; Foundation.Date in Puff_Puff_Pass.FutureForecastView.dailyAverage.getter : Swift.Double"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/FutureForecastView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "110">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "692F983A-BD7B-445D-9095-440DFA6405B5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/FutureForecastView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "forecastedCigarettes"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1AAEC8FF-5556-43BF-8C5E-CD8F65E79630"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/FutureForecastView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "dailyAverage"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "749D49DF-7B4C-4247-AF64-D0DBDD36BFE2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/FutureForecastView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "dailyAverage"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "462C5BA7-E934-4943-8440-4503B4FBD31E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/FutureForecastView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "forecastedCigarettes"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EECB461F-4011-4F7E-851A-1581ECDDDFF7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/FutureForecastView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "forecastedSpending"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct FutureForecastView: View {
-    @AppStorage("pricePerCigarette") private var pricePerCigarette: Double = 0.0
+    @AppStorage("pricePerCig") private var pricePerCigarette: Double = 0.0
     @AppStorage("cigaretteEntries") private var storedEntriesData: Data = Data()
 
     private var entries: [CigaretteEntry] {
-        (try? JSONDecoder().decode([CigaretteEntry].self, from: storedEntriesData)) ?? []
+        if let data = UserDefaults.standard.data(forKey: "cigaretteEntries"),
+           let decoded = try? JSONDecoder().decode([CigaretteEntry].self, from: data) {
+            return decoded
+        }
+        return []
     }
 
     private var dailyAverage: Double {
