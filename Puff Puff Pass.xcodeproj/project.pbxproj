@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E13C9892DFF10F200954519 /* FutureForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E13C9882DFF10F200954519 /* FutureForecastView.swift */; };
 		6E886B862DFB2F7E005992D9 /* HealthInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E886B852DFB2F7E005992D9 /* HealthInsightsView.swift */; };
 		6E886B882DFB30DD005992D9 /* ConsumptionTrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E886B872DFB30DD005992D9 /* ConsumptionTrendsView.swift */; };
-		6E886B8A2DFB30EE005992D9 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E886B892DFB30EE005992D9 /* ForecastView.swift */; };
 		6E886B8C2DFBF280005992D9 /* ChartSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E886B8B2DFBF280005992D9 /* ChartSection.swift */; };
 		6E8FE17E2DF830E900C274B2 /* Puff_Puff_PassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8FE17D2DF830E900C274B2 /* Puff_Puff_PassApp.swift */; };
 		6E8FE1822DF830EB00C274B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E8FE1812DF830EB00C274B2 /* Assets.xcassets */; };
@@ -22,9 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E13C9882DFF10F200954519 /* FutureForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureForecastView.swift; sourceTree = "<group>"; };
 		6E886B852DFB2F7E005992D9 /* HealthInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInsightsView.swift; sourceTree = "<group>"; };
 		6E886B872DFB30DD005992D9 /* ConsumptionTrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionTrendsView.swift; sourceTree = "<group>"; };
-		6E886B892DFB30EE005992D9 /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		6E886B8B2DFBF280005992D9 /* ChartSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSection.swift; sourceTree = "<group>"; };
 		6E8FE17A2DF830E900C274B2 /* Puff Puff Pass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Puff Puff Pass.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E8FE17D2DF830E900C274B2 /* Puff_Puff_PassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puff_Puff_PassApp.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 		6E8FE17C2DF830E900C274B2 /* Puff Puff Pass */ = {
 			isa = PBXGroup;
 			children = (
-				6E886B892DFB30EE005992D9 /* ForecastView.swift */,
+				6E13C9882DFF10F200954519 /* FutureForecastView.swift */,
 				6E886B872DFB30DD005992D9 /* ConsumptionTrendsView.swift */,
 				6E886B852DFB2F7E005992D9 /* HealthInsightsView.swift */,
 				6E8FE17D2DF830E900C274B2 /* Puff_Puff_PassApp.swift */,
@@ -169,7 +169,7 @@
 				6EAFDB6E2DF9E1C900D9DB57 /* HomeView.swift in Sources */,
 				6E886B8C2DFBF280005992D9 /* ChartSection.swift in Sources */,
 				6E8FE18D2DF83B4800C274B2 /* RegistrationView.swift in Sources */,
-				6E886B8A2DFB30EE005992D9 /* ForecastView.swift in Sources */,
+				6E13C9892DFF10F200954519 /* FutureForecastView.swift in Sources */,
 				6E886B862DFB2F7E005992D9 /* HealthInsightsView.swift in Sources */,
 				6E8FE17E2DF830E900C274B2 /* Puff_Puff_PassApp.swift in Sources */,
 				6EAFDB702DF9E78E00D9DB57 /* ProfileSheet.swift in Sources */,

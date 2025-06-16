@@ -19,7 +19,7 @@ struct StatisticsView: View {
                 ConsumptionTrendsView()
 
                 // Section 3: Forecast
-                ForecastView()
+                FutureForecastView()
 
             }
             .padding()
