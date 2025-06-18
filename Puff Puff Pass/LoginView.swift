@@ -41,6 +41,21 @@ struct LoginView: View {
                         showError = true
                     }
                 }
+                
+                Button("Test Supabase") {
+                    Task {
+                        do {
+                            let response = try await SupabaseManager.shared.client
+                                .from("users")
+                                .select()
+                                .execute()
+
+                            print("Response:", response)
+                        } catch {
+                            print("Supabase Error:", error)
+                        }
+                    }
+                }
 
                 NavigationLink("New user? Register here", destination: RegistrationView())
             }
