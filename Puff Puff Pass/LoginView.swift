@@ -10,57 +10,98 @@ import SwiftUI
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
-    @State private var showError = false
+
+    @State private var errorMessage: String?
+    @State private var isLoading = false
 
     @AppStorage("isLoggedIn") private var isLoggedIn = false
 
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("Login")) {
-                    TextField("Email", text: $email)
-                        .keyboardType(.emailAddress)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                        .textContentType(.emailAddress)
-                    SecureField("Password", text: $password)
+            VStack(spacing: 24) {
+                if isLoading {
+                    ProgressView("Logging in...")
+                        .padding(.top)
                 }
 
-                if showError {
-                    Text("Invalid credentials")
-                        .foregroundColor(.red)
-                }
+                Form {
+                    Section(header: Text("Login")) {
+                        TextField("Email", text: $email)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                            .textContentType(.emailAddress)
 
-                Button("Login") {   
-                    let storedEmail = UserDefaults.standard.string(forKey: "userEmail")
-                    let storedPassword = UserDefaults.standard.string(forKey: "userPassword")
-
-                    if email == storedEmail && password == storedPassword {
-                        isLoggedIn = true
-                    } else {
-                        showError = true
+                        SecureField("Password", text: $password)
                     }
-                }
-                
-                Button("Test Supabase") {
-                    Task {
-                        do {
-                            let response = try await SupabaseManager.shared.client
-                                .from("users")
-                                .select()
-                                .execute()
 
-                            print("Response:", response)
-                        } catch {
-                            print("Supabase Error:", error)
+                    if let message = errorMessage {
+                        Text(message)
+                            .foregroundColor(.red)
+                            .font(.caption)
+                            .padding(.top, 4)
+                            .accessibilityLabel("Login error: \(message)")
+                    }
+
+                    Button("Login") {
+                        Task {
+                            await handleLogin()
                         }
                     }
+                    .disabled(isLoading)
                 }
 
                 NavigationLink("New user? Register here", destination: RegistrationView())
+                    .padding(.bottom)
             }
             .navigationTitle("Login")
         }
+    }
+
+    // MARK: - Handle Login Logic
+    func handleLogin() async {
+        errorMessage = nil
+
+        guard validateInputs() else { return }
+
+        isLoading = true
+        do {
+            try await AuthManager.shared.signIn(email: email, password: password)
+
+            // ✅ Successfully logged in
+            isLoggedIn = true
+        } catch {
+            // OWASP-aligned: generic message avoids account enumeration
+            errorMessage = "Login failed. Please check your credentials and try again."
+        }
+
+        isLoading = false
+    }
+
+    // MARK: - Input Validation
+    func validateInputs() -> Bool {
+        if email.isEmpty || password.isEmpty {
+            errorMessage = "Email and password are required."
+            return false
+        }
+
+        if !isValidEmail(email) {
+            errorMessage = "Please enter a valid email address."
+            return false
+        }
+
+        if password.count < 6 {
+            errorMessage = "Password must be at least 6 characters long."
+            return false
+        }
+
+        return true
+    }
+
+    func isValidEmail(_ email: String) -> Bool {
+        // Simple regex for email validation
+        let regex = #"^\S+@\S+\.\S+$"#
+        return email.range(of: regex, options: .regularExpression) != nil
     }
 }
 
