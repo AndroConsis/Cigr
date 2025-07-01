@@ -180,5 +180,178 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A37EA6E5-828B-482D-AFBF-6F9198F33F63"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/LoginView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "handleLoginError(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3095410-10EA-4330-9D6F-B29A00CABC66"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/LoginView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
+            landmarkName = "handleLogin()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E3095410-10EA-4330-9D6F-B29A00CABC66 - 906639363837e4bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for Puff_Puff_Pass.LoginView.handleLogin() async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/LoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
+                  offsetFromSymbolStart = "187">
+               </Location>
+               <Location
+                  uuid = "E3095410-10EA-4330-9D6F-B29A00CABC66 - 3d7e794772ec4cae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) await resume partial function for Puff_Puff_Pass.LoginView.handleLogin() async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/LoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "E3095410-10EA-4330-9D6F-B29A00CABC66 - a38caee2ae2e34bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for Puff_Puff_Pass.LoginView.handleLogin() async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/LoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
+                  offsetFromSymbolStart = "85">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB671502-3B20-42A9-8011-211A8EF542AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/LoginView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "handleLogin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A29F5027-533E-4C59-BE61-5E8E018238FF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/LoginView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "handleLogin()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A29F5027-533E-4C59-BE61-5E8E018238FF - f36ca5734754edfe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Puff_Puff_Pass.LoginView.handleLogin() async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/LoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "238"
+                  endingLineNumber = "238"
+                  offsetFromSymbolStart = "526">
+               </Location>
+               <Location
+                  uuid = "A29F5027-533E-4C59-BE61-5E8E018238FF - 9ce29d62f91a4fed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for Puff_Puff_Pass.LoginView.handleLogin() async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/LoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "238"
+                  endingLineNumber = "238"
+                  offsetFromSymbolStart = "54">
+               </Location>
+               <Location
+                  uuid = "A29F5027-533E-4C59-BE61-5E8E018238FF - 9eb50d5ffd433dfc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Puff_Puff_Pass.LoginView.handleLogin() async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/LoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "238"
+                  endingLineNumber = "238"
+                  offsetFromSymbolStart = "69">
+               </Location>
+               <Location
+                  uuid = "A29F5027-533E-4C59-BE61-5E8E018238FF - 906639363837e5fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for Puff_Puff_Pass.LoginView.handleLogin() async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/LoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "238"
+                  endingLineNumber = "238"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

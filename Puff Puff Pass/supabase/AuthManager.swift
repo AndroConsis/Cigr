@@ -29,8 +29,69 @@ class AuthManager {
 
     // MARK: - Sign In
     func signIn(email: String, password: String) async throws {
-        try await client.auth.signIn(email: email, password: password)
+        do {
+            print("🔐 [AUTH DEBUG] Starting sign-in for email: \(email.prefix(3))***")
+            print("🔐 [AUTH DEBUG] Password length: \(password.count)")
+            
+            let startTime = CFAbsoluteTimeGetCurrent()
+            
+            try await client.auth.signIn(email: email, password: password)
+            
+            let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+            print("✅ [AUTH DEBUG] Sign-in successful in \(String(format: "%.2f", timeElapsed))s")
+            
+        } catch let error as URLError {
+            let timeElapsed = CFAbsoluteTimeGetCurrent() - CFAbsoluteTimeGetCurrent()
+            print("🌐 [AUTH DEBUG] Network error after \(String(format: "%.2f", timeElapsed))s:")
+            print("   - Code: \(error.code.rawValue)")
+            print("   - Description: \(error.localizedDescription)")
+            print("   - URL: \(error.failingURL?.absoluteString ?? "N/A")")
+            
+            switch error.code {
+            case .timedOut:
+                print("   - Type: Request timeout")
+            case .notConnectedToInternet:
+                print("   - Type: No internet connection")
+            case .networkConnectionLost:
+                print("   - Type: Connection lost")
+            case .cannotFindHost:
+                print("   - Type: Cannot find host")
+            case .cannotConnectToHost:
+                print("   - Type: Cannot connect to host")
+            default:
+                print("   - Type: Other network error")
+            }
+            
+            throw error
+            
+        } catch {
+            print("❌ [AUTH DEBUG] Authentication error:")
+            print("   - Type: \(type(of: error))")
+            print("   - Description: \(error.localizedDescription)")
+            
+            // Try to extract more specific error info
+            if let nsError = error as NSError? {
+                print("   - Domain: \(nsError.domain)")
+                print("   - Code: \(nsError.code)")
+                print("   - UserInfo: \(nsError.userInfo)")
+            }
+            
+            // Check for common authentication error patterns
+            let errorString = error.localizedDescription.lowercased()
+            if errorString.contains("invalid") || errorString.contains("wrong") {
+                print("   - Likely cause: Invalid credentials")
+            } else if errorString.contains("network") || errorString.contains("connection") {
+                print("   - Likely cause: Network issue")
+            } else if errorString.contains("rate") || errorString.contains("limit") {
+                print("   - Likely cause: Rate limiting")
+            } else if errorString.contains("timeout") {
+                print("   - Likely cause: Request timeout")
+            }
+            
+            throw error
+        }
     }
+
 
     // MARK: - Sign Out
     func signOut() async throws {

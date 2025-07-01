@@ -1,8 +1,15 @@
 import SwiftUI
 
 struct CigaretteEntry: Codable, Identifiable {
-    var id = UUID()
-    var timestamp: Date
+    let id: UUID
+    let userId: UUID
+    let timestamp: Date
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userId = "user_id"
+        case timestamp = "smoked_at"
+    }
 }
 
 enum NavigationPage: Hashable {
@@ -15,37 +22,47 @@ struct HomeView: View {
     @AppStorage("userEmail") private var userEmail = ""
     @AppStorage("joinDate") private var joinDate = ""
     @AppStorage("lastSmokedTime") private var lastSmokedTime: Double = Date().timeIntervalSince1970
-
     @AppStorage("isLoggedIn") private var isLoggedIn = false
+    
     @State private var showProfile = false
     @State private var selectedPage: NavigationPage?
-
     @State private var todayCount = 0
     @State private var allEntries: [CigaretteEntry] = []
     @State private var animatedCount: Int = 0
+    @State private var isAddingEntry = false
+    
+    @StateObject private var viewModel = HomeViewModel()
 
     private var todayEntries: [CigaretteEntry] {
-        allEntries.filter {
-            Calendar.current.isDateInToday($0.timestamp)
-        }
+        let calendar = Calendar.current
+        return viewModel.allEntries.filter {
+            calendar.isDateInToday($0.timestamp)
+        }.sorted { $0.timestamp > $1.timestamp } // Most recent first
     }
 
     private var totalCigarettes: Int {
-        allEntries.count
+        viewModel.allEntries.count
     }
 
     private var totalPacks: Int {
-        totalCigarettes / 20
+        guard totalCigarettes > 0 else { return 0 }
+        return totalCigarettes / 20
     }
 
     private var totalSpent: Double {
-        guard let price = Double(pricePerCig) else { return 0.0 }
+        guard let price = Double(pricePerCig), price > 0, totalCigarettes > 0 else { return 0.0 }
         return Double(totalCigarettes) * price
+    }
+    
+    // Get the most recent cigarette entry (not just today's)
+    private var mostRecentEntry: CigaretteEntry? {
+        viewModel.allEntries.sorted { $0.timestamp > $1.timestamp }.first
     }
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
+                // Header
                 HStack {
                     Text("Tracker")
                         .font(.system(size: 34, weight: .bold, design: .rounded))
@@ -75,38 +92,73 @@ struct HomeView: View {
                     }
                 }
 
-                // Time since last cigarette
-                if let last = allEntries.last {
-                    Text("⏱️ Last smoked: \(timeSince(last.timestamp)) ago")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .padding(.top, 4)
-                } else {
-                    Text("🚭 You haven't smoked yet today!")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .padding(.top, 4)
+                // Time since last cigarette - FIXED
+                Group {
+                    if let mostRecent = mostRecentEntry {
+                        let timeAgo = timeSince(mostRecent.timestamp)
+                        Text("⏱️ Last smoked: \(timeAgo) ago")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                            .padding(.top, 4)
+                    } else if viewModel.isLoading {
+                        Text("⏳ Loading...")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                            .padding(.top, 4)
+                    } else {
+                        Text("🚭 No smoking history yet!")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                            .padding(.top, 4)
+                    }
                 }
 
-                // Add Cigarette Button
+                // Add Cigarette Button - FIXED
                 Button(action: {
-                    let newEntry = CigaretteEntry(timestamp: Date())
-                    allEntries.append(newEntry)
-                    saveEntries()
-                    lastSmokedTime = newEntry.timestamp.timeIntervalSince1970
-                    animateCount(to: todayEntries.count)
+                    guard !isAddingEntry else { return } // Prevent double-tap
+                    
+                    isAddingEntry = true
+                    Task {
+                        await viewModel.addEntry()
+                        
+                        await MainActor.run {
+                            // Update last smoked time only on success
+                            if viewModel.errorMessage == nil {
+                                lastSmokedTime = Date().timeIntervalSince1970
+                                animateCount(to: todayEntries.count)
+                            }
+                            isAddingEntry = false
+                        }
+                    }
                 }) {
-                    Text("Add Cigarette")
-                        .font(.headline)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(12)
+                    HStack {
+                        if isAddingEntry {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                .scaleEffect(0.8)
+                        }
+                        Text(isAddingEntry ? "Adding..." : "Add Cigarette")
+                            .font(.headline)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(isAddingEntry ? Color.gray : Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(12)
+                    .padding(.horizontal)
+                }
+                .disabled(isAddingEntry)
+
+                // Error Message Display - NEW
+                if let errorMessage = viewModel.errorMessage {
+                    Text(errorMessage)
+                        .font(.caption)
+                        .foregroundColor(.red)
                         .padding(.horizontal)
+                        .multilineTextAlignment(.center)
                 }
 
-                // Stats Tabs
+                // Stats Tabs - FIXED
                 HStack(spacing: 20) {
                     StatCard(title: "Total", value: "\(totalCigarettes)", systemIcon: "flame")
                     StatCard(title: "Packs", value: "\(totalPacks)", systemIcon: "cube.box")
@@ -146,13 +198,32 @@ struct HomeView: View {
                 }
             }
             .onAppear {
-                loadEntries()
-                animateCount(to: todayEntries.count)
+                Task {
+                    await viewModel.loadEntries()
+                    // Animate count after entries are loaded
+                    await MainActor.run {
+                        // Only animate if loading was successful
+                        if viewModel.errorMessage == nil {
+                            animateCount(to: todayEntries.count)
+                        }
+                    }
+                }
+            }
+            .refreshable {
+                await viewModel.refresh()
+                await MainActor.run {
+                    if viewModel.errorMessage == nil {
+                        animateCount(to: todayEntries.count)
+                    }
+                }
             }
         }
     }
 
+    // FIXED: Better currency formatting
     func formattedSpent() -> String {
+        guard totalSpent > 0 else { return "₹0" }
+        
         if totalSpent.truncatingRemainder(dividingBy: 1) == 0 {
             return "₹\(Int(totalSpent))"
         } else {
@@ -166,36 +237,43 @@ struct HomeView: View {
         }
     }
 
+    // FIXED: Better time formatting with more precise handling
     func timeSince(_ date: Date) -> String {
         let interval = Int(Date().timeIntervalSince(date))
-        let hours = interval / 3600
+        
+        // Handle edge cases
+        guard interval >= 0 else { return "just now" }
+        
+        let days = interval / 86400
+        let hours = (interval % 86400) / 3600
         let minutes = (interval % 3600) / 60
-
-        if hours > 0 {
-            return "\(hours)h \(minutes)m"
+        
+        if days > 0 {
+            if days == 1 {
+                return "1 day"
+            } else {
+                return "\(days) days"
+            }
+        } else if hours > 0 {
+            if minutes > 0 {
+                return "\(hours)h \(minutes)m"
+            } else {
+                return "\(hours)h"
+            }
         } else if minutes > 0 {
             return "\(minutes)m"
+        } else if interval > 30 {
+            return "\(interval)s"
         } else {
             return "just now"
         }
     }
 
-    // MARK: - Persistence
-    func saveEntries() {
-        if let data = try? JSONEncoder().encode(allEntries) {
-            UserDefaults.standard.set(data, forKey: "cigaretteEntries")
-        }
-    }
-
-    func loadEntries() {
-        if let data = UserDefaults.standard.data(forKey: "cigaretteEntries"),
-           let decoded = try? JSONDecoder().decode([CigaretteEntry].self, from: data) {
-            allEntries = decoded
-        }
-    }
+    // MARK: - REMOVED DUPLICATE METHODS
+    // Removed saveEntries() and loadEntries() as they duplicate viewModel functionality
 }
 
-// MARK: - StatCard View
+// MARK: - StatCard View - FIXED
 struct StatCard: View {
     var title: String
     var value: String
@@ -204,21 +282,22 @@ struct StatCard: View {
     var body: some View {
         VStack(spacing: 6) {
             Image(systemName: systemIcon)
-                .font(.title)
+                .font(.title2) // Slightly smaller for better proportions
                 .foregroundColor(.blue)
 
             Text(value)
                 .font(.headline)
                 .lineLimit(1)
-                .minimumScaleFactor(0.7)
+                .minimumScaleFactor(0.5) // Allow more scaling if needed
                 .foregroundColor(.primary)
 
             Text(title)
                 .font(.caption)
                 .foregroundColor(.gray)
         }
-        .frame(maxWidth: .infinity)
-        .padding()
+        .frame(maxWidth: .infinity, minHeight: 80) // Consistent height
+        .padding(.vertical, 12)
+        .padding(.horizontal, 8)
         .background(Color(.systemGray6))
         .cornerRadius(15)
     }
