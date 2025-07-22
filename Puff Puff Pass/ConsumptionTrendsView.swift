@@ -22,13 +22,12 @@ struct ConsumptionData: Identifiable {
 
 struct ConsumptionTrendsView: View {
     @AppStorage("pricePerCig") private var pricePerCigarette: Double = 0.0
-    @AppStorage("cigaretteEntries") private var entryData: Data = Data()
-    @State private var allEntries: [CigaretteEntry] = []
+    @ObservedObject private var dataStore = CigaretteDataStore.shared
     @State private var selectedRange: TrendRange = .weekly
 
     var groupedData: [ConsumptionData] {
         let calendar = Calendar.current
-        let entriesByPeriod: [String: [CigaretteEntry]] = Dictionary(grouping: allEntries) { entry in
+        let entriesByPeriod: [String: [CigaretteEntry]] = Dictionary(grouping: dataStore.allEntries) { entry in
             let date = entry.timestamp
             let components: DateComponents
 
@@ -36,7 +35,7 @@ struct ConsumptionTrendsView: View {
             case .weekly:
                 components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: date)
                 let startOfWeek = calendar.date(from: components) ?? date
-                return "Week of \(formatDate(startOfWeek))"
+                return "\(formatDate(startOfWeek)) Week"
 
             case .monthly:
                 components = calendar.dateComponents([.year, .month], from: date)
@@ -64,36 +63,35 @@ struct ConsumptionTrendsView: View {
                 
                 if groupedData.isEmpty {
                     VStack(spacing: 16) {
-                            Image(systemName: "chart.bar.doc.horizontal")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 80, height: 80)
-                                .foregroundColor(.gray)
+                        Image(systemName: "chart.bar.doc.horizontal")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(.gray)
 
-                            Text("Your cigarette and spending trends will show up here.")
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.primary)
-                                .padding(.horizontal, 20)
+                        Text("Your cigarette and spending trends will show up here.")
+                            .font(.headline)
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.primary)
+                            .padding(.horizontal, 20)
 
-                            Text("Once you start logging, you’ll see how your smoking habits evolve weekly or monthly, with clear insights into your total cost.")
-                                .font(.subheadline)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.secondary)
-                                .padding(.horizontal, 20)
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .padding(.top, 60)
-                } else {
-                
-                Picker("Range", selection: $selectedRange) {
-                    ForEach(TrendRange.allCases, id: \.self) { range in
-                        Text(range.rawValue).tag(range)
+                        Text("Once you start logging, you’ll see how your smoking habits evolve weekly or monthly, with clear insights into your total cost.")
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal, 20)
                     }
-                }
-                .pickerStyle(.segmented)
-                .padding(.horizontal)
-                
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(.top, 60)
+                } else {
+                    Picker("Range", selection: $selectedRange) {
+                        ForEach(TrendRange.allCases, id: \.self) { range in
+                            Text(range.rawValue).tag(range)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .padding(.horizontal)
+                    
                     VStack(alignment: .leading, spacing: 16) {
                         ScrollView {
                             VStack(alignment: .leading, spacing: 8) {
@@ -111,15 +109,6 @@ struct ConsumptionTrendsView: View {
                 }
             }
             .padding()
-        }
-        .onAppear {
-            decodeEntries()
-        }
-    }
-
-    private func decodeEntries() {
-        if let decoded = try? JSONDecoder().decode([CigaretteEntry].self, from: entryData) {
-            self.allEntries = decoded
         }
     }
 
