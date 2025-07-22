@@ -31,17 +31,17 @@ struct HomeView: View {
     @State private var animatedCount: Int = 0
     @State private var isAddingEntry = false
     
-    @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var dataStore = CigaretteDataStore.shared
 
     private var todayEntries: [CigaretteEntry] {
         let calendar = Calendar.current
-        return viewModel.allEntries.filter {
+        return dataStore.allEntries.filter {
             calendar.isDateInToday($0.timestamp)
         }.sorted { $0.timestamp > $1.timestamp } // Most recent first
     }
 
     private var totalCigarettes: Int {
-        viewModel.allEntries.count
+        dataStore.allEntries.count
     }
 
     private var totalPacks: Int {
@@ -56,7 +56,7 @@ struct HomeView: View {
     
     // Get the most recent cigarette entry (not just today's)
     private var mostRecentEntry: CigaretteEntry? {
-        viewModel.allEntries.sorted { $0.timestamp > $1.timestamp }.first
+        dataStore.allEntries.sorted { $0.timestamp > $1.timestamp }.first
     }
 
     var body: some View {
@@ -100,7 +100,7 @@ struct HomeView: View {
                             .font(.footnote)
                             .foregroundColor(.gray)
                             .padding(.top, 4)
-                    } else if viewModel.isLoading {
+                    } else if dataStore.isLoading {
                         Text("⏳ Loading...")
                             .font(.footnote)
                             .foregroundColor(.gray)
@@ -119,11 +119,11 @@ struct HomeView: View {
                     
                     isAddingEntry = true
                     Task {
-                        await viewModel.addEntry()
+                        await dataStore.addEntry()
                         
                         await MainActor.run {
                             // Update last smoked time only on success
-                            if viewModel.errorMessage == nil {
+                            if dataStore.errorMessage == nil {
                                 lastSmokedTime = Date().timeIntervalSince1970
                                 animateCount(to: todayEntries.count)
                             }
@@ -150,7 +150,7 @@ struct HomeView: View {
                 .disabled(isAddingEntry)
 
                 // Error Message Display - NEW
-                if let errorMessage = viewModel.errorMessage {
+                if let errorMessage = dataStore.errorMessage {
                     Text(errorMessage)
                         .font(.caption)
                         .foregroundColor(.red)
@@ -199,20 +199,20 @@ struct HomeView: View {
             }
             .onAppear {
                 Task {
-                    await viewModel.loadEntries()
+                    await dataStore.loadEntries()
                     // Animate count after entries are loaded
                     await MainActor.run {
                         // Only animate if loading was successful
-                        if viewModel.errorMessage == nil {
+                        if dataStore.errorMessage == nil {
                             animateCount(to: todayEntries.count)
                         }
                     }
                 }
             }
             .refreshable {
-                await viewModel.refresh()
+                await dataStore.refresh()
                 await MainActor.run {
-                    if viewModel.errorMessage == nil {
+                    if dataStore.errorMessage == nil {
                         animateCount(to: todayEntries.count)
                     }
                 }

@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct HealthInsightsView: View {
-    @AppStorage("lastSmokedTime") private var lastSmokedTime: Double = Date().timeIntervalSince1970
+    @ObservedObject private var dataStore = CigaretteDataStore.shared
     let halfLife: Double = 2
     let totalHalfLivesToClear: Double = 20
+
+    var lastSmokedTime: Double {
+        guard let last = dataStore.allEntries.sorted(by: { $0.timestamp > $1.timestamp }).first else {
+            return Date().timeIntervalSince1970
+        }
+        return last.timestamp.timeIntervalSince1970
+    }
 
     var hoursSinceLastSmoke: Double {
         let lastDate = Date(timeIntervalSince1970: lastSmokedTime)
