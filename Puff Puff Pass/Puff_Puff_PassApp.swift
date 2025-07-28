@@ -19,7 +19,7 @@ struct Puff_Puff_PassApp: App {
             } else if isLoggedIn {
                 HomeView()
             } else {
-                LoginView()
+                CigrLoginView()
             }
         }
     }

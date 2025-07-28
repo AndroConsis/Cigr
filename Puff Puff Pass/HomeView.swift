@@ -187,7 +187,19 @@ struct HomeView: View {
                     email: userEmail,
                     joinDate: joinDate,
                     onLogout: {
-                         isLoggedIn = false
+                        Task {
+                            // Sign out from Supabase
+                            try? await AuthManager.shared.signOut()
+                            // Clear all user-related AppStorage
+                            isLoggedIn = false
+                            userName = ""
+                            userEmail = ""
+                            joinDate = ""
+                            UserDefaults.standard.removeObject(forKey: "appleUserId")
+                            UserDefaults.standard.removeObject(forKey: "appleEmail")
+                            UserDefaults.standard.removeObject(forKey: "appleFullName")
+                            // Optionally: clear any other sensitive data
+                        }
                     }
                 )
             }
