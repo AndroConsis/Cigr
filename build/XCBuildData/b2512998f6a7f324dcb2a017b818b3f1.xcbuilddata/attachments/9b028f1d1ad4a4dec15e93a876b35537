@@ -1,0 +1,85 @@
+{
+  "" : {
+    "const-values" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/Puff Puff Pass-master.swiftconstvalues",
+    "dependencies" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/Puff Puff Pass-master.d",
+    "diagnostics" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/Puff Puff Pass-master.dia",
+    "emit-module-dependencies" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/Puff Puff Pass-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/Puff Puff Pass-master-emit-module.dia",
+    "swift-dependencies" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/Puff Puff Pass-master.swiftdeps"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/ChartSection.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/ChartSection.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/ChartSection.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/ChartSection.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/ConsumptionTrendsView.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/ConsumptionTrendsView.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/ConsumptionTrendsView.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/ConsumptionTrendsView.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/FutureForecastView.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/FutureForecastView.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/FutureForecastView.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/FutureForecastView.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/HealthInsightsView.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/HealthInsightsView.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/HealthInsightsView.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/HealthInsightsView.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/HomeView.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/HomeView.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/HomeView.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/HomeView.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/LoginView.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/LoginView.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/LoginView.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/LoginView.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/ProfileSheet.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/ProfileSheet.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/ProfileSheet.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/ProfileSheet.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/Puff_Puff_PassApp.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/Puff_Puff_PassApp.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/Puff_Puff_PassApp.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/Puff_Puff_PassApp.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/RegistrationView.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/RegistrationView.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/RegistrationView.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/RegistrationView.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/StatisticsView.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/StatisticsView.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/StatisticsView.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/StatisticsView.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/supabase/AuthManager.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/AuthManager.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/AuthManager.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/AuthManager.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/supabase/SupabaseManager.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/SupabaseManager.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/SupabaseManager.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/SupabaseManager.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/ViewModels/CigaretteDataStore.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/CigaretteDataStore.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/CigaretteDataStore.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/CigaretteDataStore.o"
+  },
+  "/Users/prateek/Projects/Puff Puff Pass/Puff Puff Pass/ViewModels/HomeViewModel.swift" : {
+    "index-unit-output-path" : "/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/HomeViewModel.o",
+    "llvm-bc" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/HomeViewModel.bc",
+    "object" : "/Users/prateek/Projects/Puff Puff Pass/build/Puff Puff Pass.build/Release-iphoneos/Puff Puff Pass.build/Objects-normal/arm64/HomeViewModel.o"
+  }
+}

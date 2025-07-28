@@ -1,0 +1,20 @@
+{
+  "" : {
+    "const-values" : "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/build/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/XCTestDynamicOverlay-master.swiftconstvalues",
+    "dependencies" : "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/build/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/XCTestDynamicOverlay-master.d",
+    "diagnostics" : "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/build/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/XCTestDynamicOverlay-master.dia",
+    "emit-module-dependencies" : "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/build/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/XCTestDynamicOverlay-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/build/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/XCTestDynamicOverlay-master-emit-module.dia",
+    "swift-dependencies" : "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/build/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/XCTestDynamicOverlay-master.swiftdeps"
+  },
+  "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/Sources/XCTestDynamicOverlay/Internal/Deprecations.swift" : {
+    "index-unit-output-path" : "/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/Deprecations.o",
+    "llvm-bc" : "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/build/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/Deprecations.bc",
+    "object" : "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/build/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/Deprecations.o"
+  },
+  "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/Sources/XCTestDynamicOverlay/Internal/Exports.swift" : {
+    "index-unit-output-path" : "/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/Exports.o",
+    "llvm-bc" : "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/build/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/Exports.bc",
+    "object" : "/Users/prateek/Library/Developer/Xcode/DerivedData/Puff_Puff_Pass-hdhetuzkfuvdcmdnzgijlashcfcq/SourcePackages/checkouts/xctest-dynamic-overlay/build/xctest-dynamic-overlay.build/Release-iphoneos/XCTestDynamicOverlay.build/Objects-normal/arm64/Exports.o"
+  }
+}
