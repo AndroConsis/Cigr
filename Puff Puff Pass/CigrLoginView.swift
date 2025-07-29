@@ -1,5 +1,7 @@
 import SwiftUI
+import Auth
 import AuthenticationServices
+import Foundation
 
 struct CigrLoginView: View {
     @Environment(\.colorScheme) var colorScheme
@@ -9,6 +11,7 @@ struct CigrLoginView: View {
     @AppStorage("userName") private var userName = ""
     @AppStorage("appleUserId") private var appleUserId = ""
     @State private var errorMessage: String?
+    @State private var isLoading = false
     
     var body: some View {
         ZStack {
@@ -56,25 +59,7 @@ struct CigrLoginView: View {
                             request.requestedScopes = [.fullName, .email]
                         },
                         onCompletion: { result in
-                            switch result {
-                            case .success(let authResults):
-                                if let appleIDCredential = authResults.credential as? ASAuthorizationAppleIDCredential {
-                                    let userIdentifier = appleIDCredential.user
-                                    let email = appleIDCredential.email
-                                    let fullName = appleIDCredential.fullName
-                                    let name = [fullName?.givenName, fullName?.familyName].compactMap { $0 }.joined(separator: " ")
-                                    
-                                    // Save to AppStorage
-                                    appleUserId = userIdentifier
-                                    if let email = email { userEmail = email }
-                                    if !name.isEmpty { userName = name }
-                                    
-                                    // Call Supabase sign in/up with Apple
-                                    handleAppleSignIn(userIdentifier: userIdentifier, email: email, name: name)
-                                }
-                            case .failure(let error):
-                                errorMessage = "Apple Sign In failed: \(error.localizedDescription)"
-                            }
+                            handleAppleSignInResult(result)
                         }
                     )
                     .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
@@ -84,6 +69,13 @@ struct CigrLoginView: View {
                     .padding(.vertical, 8)
                     .padding(.horizontal, 24)
                     .accessibilityLabel("Sign in with Apple")
+                    .disabled(isLoading)
+                    
+                    if isLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .scaleEffect(0.8)
+                    }
                     
                     if let errorMessage = errorMessage {
                         Text(errorMessage)
@@ -120,23 +112,75 @@ struct CigrLoginView: View {
         }
     }
     
-    // MARK: - Supabase Apple Sign In Handler
-    func handleAppleSignIn(userIdentifier: String, email: String?, name: String) {
-        // 1. Exchange Apple credential for a Supabase session (using Supabase Auth)
-        // 2. If first sign-in, register user in your users table
-        // 3. On success, set isLoggedIn = true
-        Task {
-            do {
-                // Use Supabase Auth to sign in with Apple (this requires backend setup for Apple provider)
-                // Example (pseudo-code, replace with your actual Supabase client call):
-                // let session = try await SupabaseManager.shared.client.auth.signInWithIdToken(provider: .apple, idToken: <appleIDToken>, nonce: <nonce>)
-                // For now, just simulate success:
-                isLoggedIn = true
-                // Optionally, insert user into your users table if needed
-            } catch {
-                errorMessage = "Supabase sign in failed: \(error.localizedDescription)"
+    // MARK: - Simplified Apple Sign In Handler
+    private func handleAppleSignInResult(_ result: Result<ASAuthorization, Error>) {
+        switch result {
+        case .success(let authorization):
+            guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+                errorMessage = "Failed to get Apple credentials"
+                return
             }
+            
+            Task {
+                await signInWithApple(credential: appleIDCredential)
+            }
+            
+        case .failure(let error):
+            errorMessage = "Apple Sign In failed. Please try again."
         }
+    }
+    
+    private func signInWithApple(credential: ASAuthorizationAppleIDCredential) async {
+        isLoading = true
+        errorMessage = nil
+        
+        do {
+            // Extract user data
+            let userIdentifier = credential.user
+            let email = credential.email
+            let fullName = credential.fullName
+            let name = [fullName?.givenName, fullName?.familyName].compactMap { $0 }.joined(separator: " ")
+            
+            // Save to AppStorage
+            appleUserId = userIdentifier
+            if let email = email { userEmail = email }
+            if !name.isEmpty { userName = name }
+            
+            // Get the identity token as string
+            guard let identityToken = credential.identityToken,
+                  let idTokenString = String(data: identityToken, encoding: .utf8) else {
+                errorMessage = "Failed to get Apple identity token"
+                isLoading = false
+                return
+            }
+            
+            // Sign in with Supabase using Apple ID token (without nonce)
+            let session = try await SupabaseManager.shared.client.auth.signInWithIdToken(
+                credentials: .init(
+                    provider: .apple,
+                    idToken: idTokenString
+                )
+            )
+            
+            // Handle successful sign in
+            if let user = session.user as? User {
+                // Update AppStorage with user info from Supabase
+                if let userEmail = user.email {
+                    self.userEmail = userEmail
+                }
+                
+                // Set login state
+                isLoggedIn = true
+            } else {
+                errorMessage = "Failed to get user from Supabase session"
+            }
+            
+        } catch {
+            errorMessage = "Sign in failed: Please try again."
+            print("Sign in failed: \(error.localizedDescription)")
+        }
+        
+        isLoading = false
     }
 }
 
