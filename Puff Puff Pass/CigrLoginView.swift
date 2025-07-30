@@ -46,8 +46,10 @@ struct CigrLoginView: View {
                 
                 Spacer()
                 
-                // Lower part: Sign in with: + full button
-                VStack(spacing: 18) {
+                // Move the sign-in section to the center of the bottom half
+                Spacer()
+                
+                VStack(spacing: 14) {
                     Text("Get Started")
                         .font(.system(size: 16, weight: .regular, design: .default))
                         .foregroundColor(.white.opacity(0.85))
@@ -85,7 +87,14 @@ struct CigrLoginView: View {
                             .padding(.top, 8)
                     }
                 }
-                .padding(.bottom, 120)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 0)
+                .padding(.bottom, 0)
+                .padding(.horizontal, 0)
+                .padding(.vertical, 0)
+                .frame(height: 220)
+                .background(Color.clear)
+                .alignmentGuide(.bottom) { d in d[.bottom] }
                 
                 Spacer()
                 
@@ -169,6 +178,9 @@ struct CigrLoginView: View {
                     self.userEmail = userEmail
                 }
                 
+                // Create user profile in users table
+                await createUserProfile(user: user, appleName: name, appleEmail: email)
+                
                 // Set login state
                 isLoggedIn = true
             } else {
@@ -181,6 +193,39 @@ struct CigrLoginView: View {
         }
         
         isLoading = false
+    }
+    
+    // MARK: - Create User Profile
+    private func createUserProfile(user: User, appleName: String, appleEmail: String?) async {
+        do {
+            // Determine username: use Apple name if available, otherwise use email prefix
+            let username: String
+            if !appleName.isEmpty {
+                username = appleName
+            } else if let email = appleEmail {
+                username = String(email.split(separator: "@").first ?? "user")
+            } else {
+                username = "user_\(user.id.uuidString.prefix(8))"
+            }   
+            
+            // Use the email from Supabase user or fallback to Apple email
+            let finalEmail = user.email ?? appleEmail ?? ""
+            
+            // Create user profile with default price_per_cigarette = 20
+            try await AuthManager.shared.insertUserMetadata(
+                userId: user.id,
+                username: username,
+                email: finalEmail,
+                pricePerCigarette: 20.0
+            )
+            
+            print("✅ User profile created successfully for user: \(username)")
+            
+        } catch {
+            // Log the error but don't fail the login process
+            print("⚠️ Failed to create user profile: \(error.localizedDescription)")
+            print("⚠️ User is still logged in, but profile creation failed")
+        }
     }
 }
 

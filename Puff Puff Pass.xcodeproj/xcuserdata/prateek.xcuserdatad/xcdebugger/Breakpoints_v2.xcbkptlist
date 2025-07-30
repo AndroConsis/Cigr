@@ -477,8 +477,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
             endingLineNumber = "189"
-            landmarkName = "SafariView"
-            landmarkType = "14">
+            landmarkName = "signInWithApple(credential:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -493,7 +493,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
             endingLineNumber = "137"
-            landmarkName = "signInWithApple(credential:)"
+            landmarkName = "handleAppleSignInResult(_:)"
             landmarkType = "7">
             <Locations>
                <Location
