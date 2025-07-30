@@ -12,6 +12,7 @@ struct CigrLoginView: View {
     @AppStorage("appleUserId") private var appleUserId = ""
     @State private var errorMessage: String?
     @State private var isLoading = false
+    @State private var loadingMessage = "Signing in..."
     
     var body: some View {
         ZStack {
@@ -74,9 +75,17 @@ struct CigrLoginView: View {
                     .disabled(isLoading)
                     
                     if isLoading {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                            .scaleEffect(0.8)
+                        HStack(spacing: 12) {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                .scaleEffect(0.8)
+                            
+                            Text(loadingMessage)
+                                .font(.system(size: 14, weight: .medium, design: .default))
+                                .foregroundColor(.white.opacity(0.9))
+                                .transition(.opacity)
+                        }
+                        .padding(.top, 8)
                     }
                     
                     if let errorMessage = errorMessage {
@@ -142,6 +151,7 @@ struct CigrLoginView: View {
     private func signInWithApple(credential: ASAuthorizationAppleIDCredential) async {
         isLoading = true
         errorMessage = nil
+        loadingMessage = "Authenticating with Apple..."
         
         do {
             // Extract user data
@@ -163,6 +173,11 @@ struct CigrLoginView: View {
                 return
             }
             
+            // Update loading message for Supabase authentication
+            await MainActor.run {
+                loadingMessage = "Signing in to your account..."
+            }
+            
             // Sign in with Supabase using Apple ID token (without nonce)
             let session = try await SupabaseManager.shared.client.auth.signInWithIdToken(
                 credentials: .init(
@@ -178,8 +193,21 @@ struct CigrLoginView: View {
                     self.userEmail = userEmail
                 }
                 
+                // Update loading message for profile creation
+                await MainActor.run {
+                    loadingMessage = "Setting up your profile..."
+                }
+                
                 // Create user profile in users table
                 await createUserProfile(user: user, appleName: name, appleEmail: email)
+                
+                // Final loading message
+                await MainActor.run {
+                    loadingMessage = "Welcome! Redirecting..."
+                }
+                
+                // Small delay to show the welcome message
+                try await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
                 
                 // Set login state
                 isLoggedIn = true
@@ -206,7 +234,7 @@ struct CigrLoginView: View {
                 username = String(email.split(separator: "@").first ?? "user")
             } else {
                 username = "user_\(user.id.uuidString.prefix(8))"
-            }   
+            }
             
             // Use the email from Supabase user or fallback to Apple email
             let finalEmail = user.email ?? appleEmail ?? ""
