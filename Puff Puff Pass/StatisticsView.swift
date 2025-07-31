@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StatisticsView: View {
+    @ObservedObject private var userManager = UserManager.shared
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
@@ -26,5 +28,11 @@ struct StatisticsView: View {
         }
         .navigationTitle("Statistics")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            Task {
+                // Ensure user profile is loaded for accurate price calculations
+                await userManager.loadUserProfile()
+            }
+        }
     }
 }

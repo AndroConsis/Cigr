@@ -17,10 +17,6 @@ enum NavigationPage: Hashable {
 }
 
 struct HomeView: View {
-    @AppStorage("pricePerCig") private var pricePerCig: String = "0"
-    @AppStorage("userName") private var userName = ""
-    @AppStorage("userEmail") private var userEmail = ""
-    @AppStorage("joinDate") private var joinDate = ""
     @AppStorage("lastSmokedTime") private var lastSmokedTime: Double = Date().timeIntervalSince1970
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     
@@ -32,6 +28,7 @@ struct HomeView: View {
     @State private var isAddingEntry = false
     
     @StateObject private var dataStore = CigaretteDataStore.shared
+    @StateObject private var userManager = UserManager.shared
 
     private var todayEntries: [CigaretteEntry] {
         let calendar = Calendar.current
@@ -50,8 +47,10 @@ struct HomeView: View {
     }
 
     private var totalSpent: Double {
-        guard let price = Double(pricePerCig), price > 0, totalCigarettes > 0 else { return 0.0 }
-        return Double(totalCigarettes) * price
+        guard let userProfile = userManager.userProfile,
+              userProfile.price_per_cigarette > 0,
+              totalCigarettes > 0 else { return 0.0 }
+        return Double(totalCigarettes) * userProfile.price_per_cigarette
     }
     
     // Get the most recent cigarette entry (not just today's)
@@ -182,26 +181,23 @@ struct HomeView: View {
                 Spacer()
             }
             .sheet(isPresented: $showProfile) {
-                ProfileSheet(
-                    name: userName,
-                    email: userEmail,
-                    joinDate: joinDate,
-                    onLogout: {
-                        Task {
-                            // Sign out from Supabase
-                            try? await AuthManager.shared.signOut()
-                            // Clear all user-related AppStorage
-                            isLoggedIn = false
-                            userName = ""
-                            userEmail = ""
-                            joinDate = ""
-                            UserDefaults.standard.removeObject(forKey: "appleUserId")
-                            UserDefaults.standard.removeObject(forKey: "appleEmail")
-                            UserDefaults.standard.removeObject(forKey: "appleFullName")
-                            // Optionally: clear any other sensitive data
-                        }
+                ProfileSheet(onLogout: {
+                    Task {
+                        // Clear UserManager cache first
+                        UserManager.shared.clearUserData()
+                        
+                        // Sign out from Supabase
+                        try? await AuthManager.shared.signOut()
+                        
+                        // Clear all user-related AppStorage
+                        isLoggedIn = false
+                        UserDefaults.standard.removeObject(forKey: "appleUserId")
+                        UserDefaults.standard.removeObject(forKey: "appleEmail")
+                        UserDefaults.standard.removeObject(forKey: "appleFullName")
+                        UserDefaults.standard.removeObject(forKey: "pricePerCig")
+                        // Optionally: clear any other sensitive data
                     }
-                )
+                })
             }
             .navigationDestination(for: NavigationPage.self) { page in
                 switch page {
@@ -211,7 +207,12 @@ struct HomeView: View {
             }
             .onAppear {
                 Task {
+                    // Load user profile first
+                    await userManager.loadUserProfile()
+                    
+                    // Then load cigarette entries
                     await dataStore.loadEntries()
+                    
                     // Animate count after entries are loaded
                     await MainActor.run {
                         // Only animate if loading was successful
@@ -222,6 +223,7 @@ struct HomeView: View {
                 }
             }
             .refreshable {
+                await userManager.refreshUserProfile()
                 await dataStore.refresh()
                 await MainActor.run {
                     if dataStore.errorMessage == nil {

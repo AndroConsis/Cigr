@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FutureForecastView: View {
-    @AppStorage("pricePerCig") private var pricePerCigarette: Double = 0.0
     @ObservedObject private var dataStore = CigaretteDataStore.shared
+    @ObservedObject private var userManager = UserManager.shared
 
     private var entries: [CigaretteEntry] {
         dataStore.allEntries
@@ -27,7 +27,8 @@ struct FutureForecastView: View {
     }
 
     private var forecastedSpending: Double {
-        Double(forecastedCigarettes) * pricePerCigarette
+        let pricePerCigarette = userManager.userProfile?.price_per_cigarette ?? 0.0
+        return Double(forecastedCigarettes) * pricePerCigarette
     }
 
     var body: some View {

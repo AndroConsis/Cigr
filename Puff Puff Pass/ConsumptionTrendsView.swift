@@ -21,8 +21,8 @@ struct ConsumptionData: Identifiable {
 }
 
 struct ConsumptionTrendsView: View {
-    @AppStorage("pricePerCig") private var pricePerCigarette: Double = 0.0
     @ObservedObject private var dataStore = CigaretteDataStore.shared
+    @ObservedObject private var userManager = UserManager.shared
     @State private var selectedRange: TrendRange = .weekly
 
     var groupedData: [ConsumptionData] {
@@ -45,7 +45,8 @@ struct ConsumptionTrendsView: View {
         }
 
         return entriesByPeriod.map { label, entries in
-            ConsumptionData(
+            let pricePerCigarette = userManager.userProfile?.price_per_cigarette ?? 0.0
+            return ConsumptionData(
                 label: label,
                 count: entries.count,
                 totalCost: Double(entries.count) * pricePerCigarette
