@@ -452,38 +452,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "02975B58-3043-49F0-AF98-86092BD500B1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Puff Puff Pass/CigrLoginView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "signInWithApple(credential:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D2BB7097-732B-48A8-97BE-B10302CB4E91"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Puff Puff Pass/CigrLoginView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "signInWithApple(credential:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "FFBE302A-80A8-43FB-BA8E-8BCCA43D0821"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -493,8 +461,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
             endingLineNumber = "137"
-            landmarkName = "handleAppleSignInResult(_:)"
-            landmarkType = "7">
+            landmarkName = "body"
+            landmarkType = "24">
             <Locations>
                <Location
                   uuid = "FFBE302A-80A8-43FB-BA8E-8BCCA43D0821 - 4da9e66be009dd82"
@@ -532,71 +500,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "18004E53-6670-44FE-A68C-697637E91943"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Puff Puff Pass/CigrLoginView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "18004E53-6670-44FE-A68C-697637E91943 - 63490456cd161a85"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.ASAuthorizationAppleIDRequest) -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.ModifiedContent&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.AccessibilityAttachmentModifier&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Spacer, SwiftUI.ModifiedContent&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.AccessibilityAttachmentModifier&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.frame(minWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, minHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt; in Puff_Puff_Pass.CigrLoginView.body.getter : some"
-                  moduleName = "Puff Puff Pass"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "74">
-               </Location>
-               <Location
-                  uuid = "18004E53-6670-44FE-A68C-697637E91943 - b5bfae161d97d305"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "partial apply forwarder for closure #2 (Swift.Result&lt;__C.ASAuthorization, Swift.Error&gt;) -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.disabled(Swift.Bool) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: CoreGraphics.CGFloat, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Spacer, SwiftUI.ModifiedContent&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.AccessibilityAttachmentModifier&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.frame(minWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, minHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt; in Puff_Puff_Pass.CigrLoginView.body.getter : some"
-                  moduleName = "Puff Puff Pass"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "45">
-               </Location>
-               <Location
-                  uuid = "18004E53-6670-44FE-A68C-697637E91943 - ede7e0ef77bd589"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.disabled(Swift.Bool) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Spacer, SwiftUI.ModifiedContent&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.AccessibilityAttachmentModifier&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.alignmentGuide(_: SwiftUI.VerticalAlignment, computeValue: (SwiftUI.ViewDimensions) -&gt; CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.frame(minWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, minHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt; in Puff_Puff_Pass.CigrLoginView.body.getter : some"
-                  moduleName = "Puff Puff Pass"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "1960">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "92C0B41E-21A1-43EC-9434-A10B3D137761"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Puff Puff Pass/CigrLoginView.swift"
@@ -755,7 +660,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4D4C009D-3D24-4BEB-AB68-25E2EE48037C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Puff Puff Pass/CigrLoginView.swift"
@@ -817,62 +722,371 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "154A5EC4-E86B-4D2A-A6B1-22C050161872"
-            shouldBeEnabled = "No"
+            uuid = "DA5A0983-83F1-4C3F-8887-26AEFF136E4C"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Puff Puff Pass/CigrLoginView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "signInWithApple(credential:)"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "handleAppleSignInError(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "154A5EC4-E86B-4D2A-A6B1-22C050161872 - d1481040dc7f39b6"
+                  uuid = "DA5A0983-83F1-4C3F-8887-26AEFF136E4C - 8617e2b7c63d952b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Puff_Puff_Pass.CigrLoginView.sha256(Swift.String) -&gt; Swift.String"
+                  symbolName = "(1) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.createUserProfile(user: Auth.User, appleName: Swift.String, appleEmail: Swift.Optional&lt;Swift.String&gt;) async -&gt; ()"
                   moduleName = "Puff Puff Pass"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "175"
-                  endingLineNumber = "175"
-                  offsetFromSymbolStart = "397">
+                  startingLineNumber = "231"
+                  endingLineNumber = "231"
+                  offsetFromSymbolStart = "52">
                </Location>
                <Location
-                  uuid = "154A5EC4-E86B-4D2A-A6B1-22C050161872 - efe0d260ca6e22c3"
+                  uuid = "DA5A0983-83F1-4C3F-8887-26AEFF136E4C - eaec94fc82d341f0"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
+                  symbolName = "(13) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
                   moduleName = "Puff Puff Pass"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "175"
-                  endingLineNumber = "175"
-                  offsetFromSymbolStart = "561">
+                  startingLineNumber = "233"
+                  endingLineNumber = "233"
+                  offsetFromSymbolStart = "220">
                </Location>
                <Location
-                  uuid = "154A5EC4-E86B-4D2A-A6B1-22C050161872 - fb559cc11171fccc"
+                  uuid = "DA5A0983-83F1-4C3F-8887-26AEFF136E4C - eaec94fc82d341d1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
+                  symbolName = "(13) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
                   moduleName = "Puff Puff Pass"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "175"
-                  endingLineNumber = "175"
-                  offsetFromSymbolStart = "764">
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  uuid = "DA5A0983-83F1-4C3F-8887-26AEFF136E4C - 1d43eca7e997550a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Puff_Puff_Pass.CigrLoginView.handleAppleSignInError(Swift.Error) -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "229"
+                  endingLineNumber = "229"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  uuid = "DA5A0983-83F1-4C3F-8887-26AEFF136E4C - 1d43eca7e99755e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Puff_Puff_Pass.CigrLoginView.handleAppleSignInError(Swift.Error) -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "230"
+                  endingLineNumber = "230"
+                  offsetFromSymbolStart = "252">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A3647E5-F3D6-4A8A-81B6-26A0126564D6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/CigrLoginView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "handleAppleSignInError(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2A3647E5-F3D6-4A8A-81B6-26A0126564D6 - 8617e2b7c63d952b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.createUserProfile(user: Auth.User, appleName: Swift.String, appleEmail: Swift.Optional&lt;Swift.String&gt;) async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "231"
+                  endingLineNumber = "231"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "2A3647E5-F3D6-4A8A-81B6-26A0126564D6 - eaec94fc82d341f0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(13) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "233"
+                  endingLineNumber = "233"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  uuid = "2A3647E5-F3D6-4A8A-81B6-26A0126564D6 - eaec94fc82d341d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(13) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  uuid = "2A3647E5-F3D6-4A8A-81B6-26A0126564D6 - 1d43eca7e997546d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Puff_Puff_Pass.CigrLoginView.handleAppleSignInError(Swift.Error) -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  uuid = "2A3647E5-F3D6-4A8A-81B6-26A0126564D6 - 1d43eca7e997544c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Puff_Puff_Pass.CigrLoginView.handleAppleSignInError(Swift.Error) -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "235"
+                  endingLineNumber = "235"
+                  offsetFromSymbolStart = "324">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "085CB238-1F8E-4E5C-90A9-2CCC27F404A8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/CigrLoginView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "randomNonceString(length:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "085CB238-1F8E-4E5C-90A9-2CCC27F404A8 - d41635a6803fe75a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "1200">
+               </Location>
+               <Location
+                  uuid = "085CB238-1F8E-4E5C-90A9-2CCC27F404A8 - d41635a6803fe75a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "256">
+               </Location>
+               <Location
+                  uuid = "085CB238-1F8E-4E5C-90A9-2CCC27F404A8 - e38be007a7474159"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "085CB238-1F8E-4E5C-90A9-2CCC27F404A8 - 123e39835aa03955"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "085CB238-1F8E-4E5C-90A9-2CCC27F404A8 - a917c266e6944018"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(10) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "085CB238-1F8E-4E5C-90A9-2CCC27F404A8 - d41635a6803fe739"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Puff_Puff_Pass.CigrLoginView.signInWithApple(credential: __C.ASAuthorizationAppleIDCredential) async -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
+                  offsetFromSymbolStart = "368">
+               </Location>
+               <Location
+                  uuid = "085CB238-1F8E-4E5C-90A9-2CCC27F404A8 - 4da9e66be009d907"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Puff_Puff_Pass.CigrLoginView.randomNonceString(length: Swift.Int) -&gt; Swift.String"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "576">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DDDFAABD-ED2C-4036-B42A-79FEBAD2591B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puff Puff Pass/supabase/AuthManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "getUserProfile(userId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DDDFAABD-ED2C-4036-B42A-79FEBAD2591B - 2ae8f6e562cc3687"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for function signature specialization &lt;Arg[3] = Dead&gt; of Puff_Puff_Pass.AuthManager.handleAppleSignIn(userId: Foundation.UUID, appleName: Swift.Optional&lt;Swift.String&gt;, appleEmail: Swift.Optional&lt;Swift.String&gt;) async throws -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/supabase/AuthManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "DDDFAABD-ED2C-4036-B42A-79FEBAD2591B - f88288659ef3813e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) await resume partial function for function signature specialization &lt;Arg[3] = Dead&gt; of Puff_Puff_Pass.AuthManager.handleAppleSignIn(userId: Foundation.UUID, appleName: Swift.Optional&lt;Swift.String&gt;, appleEmail: Swift.Optional&lt;Swift.String&gt;) async throws -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/supabase/AuthManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "DDDFAABD-ED2C-4036-B42A-79FEBAD2591B - 2ae8f6e562cc3687"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for function signature specialization &lt;Arg[3] = Dead&gt; of Puff_Puff_Pass.AuthManager.handleAppleSignIn(userId: Foundation.UUID, appleName: Swift.Optional&lt;Swift.String&gt;, appleEmail: Swift.Optional&lt;Swift.String&gt;) async throws -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/supabase/AuthManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "36">
                </Location>
             </Locations>
          </BreakpointContent>

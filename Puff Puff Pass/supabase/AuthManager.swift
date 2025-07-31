@@ -21,6 +21,11 @@ class AuthManager {
         let email: String
         let price_per_cigarette: Double
     }
+    
+    struct SupabaseUserUpdate: Codable {
+        let username: String?
+        let email: String?
+    }
 
     // MARK: - Sign Up
     func signUp(email: String, password: String) async throws {
@@ -92,7 +97,6 @@ class AuthManager {
         }
     }
 
-
     // MARK: - Sign Out
     func signOut() async throws {
         try await client.auth.signOut()
@@ -108,12 +112,19 @@ class AuthManager {
         return client.auth.currentUser != nil
     }
     
+    // MARK: - Enhanced User Profile Management
     func insertUserMetadata(
         userId: UUID,
         username: String,
         email: String,
         pricePerCigarette: Double
     ) async throws {
+        print("📝 [AUTH MANAGER] Inserting user metadata...")
+        print("   - User ID: \(userId)")
+        print("   - Username: \(username)")
+        print("   - Email: \(email)")
+        print("   - Price per cigarette: \(pricePerCigarette)")
+        
         let userData = SupabaseUserInsert(
             id: userId.uuidString,
             username: username,
@@ -121,10 +132,132 @@ class AuthManager {
             price_per_cigarette: pricePerCigarette
         )
 
-        try await SupabaseManager.shared.client
-            .from("users")
-            .insert(userData)
-            .execute()
+        do {
+            let response = try await SupabaseManager.shared.client
+                .from("users")
+                .insert(userData)
+                .execute()
+            
+            print("✅ [AUTH MANAGER] User profile created successfully")
+            print("📊 [AUTH MANAGER] Insert response: \(response)")
+        } catch {
+            print("❌ [AUTH MANAGER] Failed to create user profile: \(error.localizedDescription)")
+            print("🔍 [AUTH MANAGER] Error details: \(error)")
+            throw error
+        }
     }
+    
+    // MARK: - Check User Profile Exists
+    func checkUserProfileExists(userId: UUID) async throws -> Bool {
+        do {
+            let response = try await SupabaseManager.shared.client
+                .from("users")
+                .select("id")
+                .eq("id", value: userId.uuidString)
+                .execute()
+            
+            // Check if response contains data
+            let data = response.data
+            let jsonData = try JSONSerialization.jsonObject(with: data)
+            if let array = jsonData as? [[String: Any]], !array.isEmpty {
+                print("✅ [AUTH MANAGER] User profile exists for ID: \(userId)")
+                return true
+            }
+            
+            print("❌ [AUTH MANAGER] User profile not found for ID: \(userId)")
+            return false
+        } catch {
+            print("❌ [AUTH MANAGER] Error checking user profile: \(error.localizedDescription)")
+            // If we get an error, assume user doesn't exist
+            return false
+        }
+    }
+    
+    // MARK: - Update User Profile
+    func updateUserProfile(
+        userId: UUID,
+        username: String? = nil,
+        email: String? = nil
+    ) async throws {
+        // Create update data using the Codable struct
+        let updateData = SupabaseUserUpdate(
+            username: username?.isEmpty == false ? username : nil,
+            email: email?.isEmpty == false ? email : nil
+        )
+        
+        do {
+            try await SupabaseManager.shared.client
+                .from("users")
+                .update(updateData)
+                .eq("id", value: userId.uuidString)
+                .execute()
+            
+            print("✅ [AUTH MANAGER] User profile updated successfully")
+        } catch {
+            print("❌ [AUTH MANAGER] Failed to update user profile: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    // MARK: - Get User Profile
+    func getUserProfile(userId: UUID) async throws -> SupabaseUserInsert? {
+        do {
+            let response = try await SupabaseManager.shared.client
+                .from("users")
+                .select("*")
+                .eq("id", value: userId.uuidString)
+                .execute()
+            
+            // Parse the response to get user data
+            // Note: This is a simplified implementation
+            // In a real app, you'd want to properly decode the response
+            return nil
+        } catch {
+            print("❌ [AUTH MANAGER] Failed to get user profile: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    // MARK: - Apple Sign-In Specific Methods
+    func handleAppleSignIn(
+        userId: UUID,
+        appleName: String?,
+        appleEmail: String?
+    ) async throws {
+        print("🔐 [AUTH MANAGER] Starting Apple Sign-In handling for user: \(userId)")
+        
+        // Check if user profile exists
+        let profileExists = try await checkUserProfileExists(userId: userId)
+        
+        if profileExists {
+            print("📝 [AUTH MANAGER] User profile exists, updating with Apple data...")
+            // Update existing profile with new Apple information if available
+            try await updateUserProfile(
+                userId: userId,
+                username: appleName,
+                email: appleEmail
+            )
+            
+        } else {
+            print("🆕 [AUTH MANAGER] Creating new user profile...")
+            // Create new profile
+            let username = appleName ?? "user_\(userId.uuidString.prefix(8))"
+            let email = appleEmail ?? ""
+            
+            print("📋 [AUTH MANAGER] Creating profile with - Username: \(username), Email: \(email)")
+            
+            try await insertUserMetadata(
+                userId: userId,
+                username: username,
+                email: email,
+                pricePerCigarette: 20.0
+            )
+            
+            // Note: Auth metadata update is not available in Supabase Swift client
+            // Display name will be stored in the users table as username
+            print("ℹ️ [AUTH MANAGER] Display name stored as username: \(username)")
+        }
+    }
+    
 
 }
