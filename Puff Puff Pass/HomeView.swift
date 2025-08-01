@@ -19,6 +19,7 @@ enum NavigationPage: Hashable {
 struct HomeView: View {
     @AppStorage("lastSmokedTime") private var lastSmokedTime: Double = Date().timeIntervalSince1970
     @AppStorage("isLoggedIn") private var isLoggedIn = false
+    @AppStorage("hasShownWelcomeBox") private var hasShownWelcomeBox = false
     
     @State private var showProfile = false
     @State private var selectedPage: NavigationPage?
@@ -26,6 +27,7 @@ struct HomeView: View {
     @State private var allEntries: [CigaretteEntry] = []
     @State private var animatedCount: Int = 0
     @State private var isAddingEntry = false
+    @State private var showWelcomeBox = false
     
     @StateObject private var dataStore = CigaretteDataStore.shared
     @StateObject private var userManager = UserManager.shared
@@ -112,6 +114,14 @@ struct HomeView: View {
                     }
                 }
 
+                // Welcome Box - Show for first-time users or users with no cigarette history
+                if showWelcomeBox {
+                    WelcomeBoxView(
+                        hasCigaretteHistory: !dataStore.allEntries.isEmpty
+                    )
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                }
+
                 // Add Cigarette Button - FIXED
                 Button(action: {
                     guard !isAddingEntry else { return } // Prevent double-tap
@@ -125,6 +135,13 @@ struct HomeView: View {
                             if dataStore.errorMessage == nil {
                                 lastSmokedTime = Date().timeIntervalSince1970
                                 animateCount(to: todayEntries.count)
+                                
+                                // Hide welcome box after first cigarette is logged
+                                if showWelcomeBox {
+                                    withAnimation(.easeInOut(duration: 0.3)) {
+                                        hasShownWelcomeBox = true
+                                    }
+                                }
                             }
                             isAddingEntry = false
                         }
@@ -136,7 +153,7 @@ struct HomeView: View {
                                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                 .scaleEffect(0.8)
                         }
-                        Text(isAddingEntry ? "Adding..." : "Add Smoke")
+                        Text(isAddingEntry ? "Adding..." : "Add Cigarette")
                             .font(.headline)
                     }
                     .padding()
@@ -218,6 +235,13 @@ struct HomeView: View {
                         // Only animate if loading was successful
                         if dataStore.errorMessage == nil {
                             animateCount(to: todayEntries.count)
+                        }
+                        
+                        // Show welcome box for users with no cigarette history
+                        if dataStore.allEntries.isEmpty {
+                            withAnimation(.easeInOut(duration: 0.5)) {
+                                showWelcomeBox = true
+                            }
                         }
                     }
                 }
