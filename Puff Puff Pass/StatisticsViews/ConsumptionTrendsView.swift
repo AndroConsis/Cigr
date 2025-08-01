@@ -57,10 +57,10 @@ struct ConsumptionTrendsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Text("📊 Consumption Trends")
+                Text("📈 Consumption Trends")
                     .font(.title2)
                     .bold()
-                    .padding(.top)
+                    .padding([.horizontal, .top])
                 
                 if groupedData.isEmpty {
                     VStack(spacing: 16) {

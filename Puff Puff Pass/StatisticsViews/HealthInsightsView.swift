@@ -17,20 +17,22 @@ struct HealthInsightsView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("🧠 Health Insights")
-                .font(.title2)
-                .bold()
-                .padding([.horizontal, .top])
-
-            if let mostRecentEntry = mostRecentEntry {
-                HealthDataView(
-                    lastSmokedTimestamp: mostRecentEntry.timestamp,
-                    halfLife: halfLife,
-                    totalHalfLivesToClear: totalHalfLivesToClear
-                )
-            } else {
-                EmptyStateView()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("🫀 Health Insights")
+                    .font(.title2)
+                    .bold()
+                    .padding([.horizontal, .top])
+                
+                if let mostRecentEntry = mostRecentEntry {
+                    HealthDataView(
+                        lastSmokedTimestamp: mostRecentEntry.timestamp,
+                        halfLife: halfLife,
+                        totalHalfLivesToClear: totalHalfLivesToClear
+                    )
+                } else {
+                    EmptyStateView()
+                }
             }
         }
     }

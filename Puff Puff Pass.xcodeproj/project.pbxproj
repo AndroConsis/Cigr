@@ -114,11 +114,9 @@
 		6E8FE17C2DF830E900C274B2 /* Puff Puff Pass */ = {
 			isa = PBXGroup;
 			children = (
+				6EE0F5782E3C9B36007B5383 /* StatisticsViews */,
 				6E202C2C2E0A6DBD0070E3A7 /* ViewModels */,
 				6E202C272E0272080070E3A7 /* supabase */,
-				6E13C9882DFF10F200954519 /* FutureForecastView.swift */,
-				6E886B872DFB30DD005992D9 /* ConsumptionTrendsView.swift */,
-				6E886B852DFB2F7E005992D9 /* HealthInsightsView.swift */,
 				6E8FE17D2DF830E900C274B2 /* Puff_Puff_PassApp.swift */,
 				6E8FE18C2DF83B4800C274B2 /* RegistrationView.swift */,
 				6E8FE1812DF830EB00C274B2 /* Assets.xcassets */,
@@ -140,6 +138,16 @@
 				6E8FE1852DF830EB00C274B2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6EE0F5782E3C9B36007B5383 /* StatisticsViews */ = {
+			isa = PBXGroup;
+			children = (
+				6E13C9882DFF10F200954519 /* FutureForecastView.swift */,
+				6E886B872DFB30DD005992D9 /* ConsumptionTrendsView.swift */,
+				6E886B852DFB2F7E005992D9 /* HealthInsightsView.swift */,
+			);
+			path = StatisticsViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +310,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Debug;
 		};
@@ -356,7 +364,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
 		};

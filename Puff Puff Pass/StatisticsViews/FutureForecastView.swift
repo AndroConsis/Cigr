@@ -35,9 +35,9 @@ struct FutureForecastView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 Text("🔮 Future Projections")
-                    .font(.title)
+                    .font(.title2)
                     .bold()
-                    .padding(.bottom, 8)
+                    .padding([.horizontal, .top])
 
                 // Cigarette Forecast
                 VStack(alignment: .leading, spacing: 8) {

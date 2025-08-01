@@ -63,7 +63,7 @@ struct HomeView: View {
             VStack(spacing: 20) {
                 // Header
                 HStack {
-                    Text("Tracker")
+                    Text("Cigr")
                         .font(.system(size: 34, weight: .bold, design: .rounded))
                     Spacer()
                     Button(action: {
@@ -136,7 +136,7 @@ struct HomeView: View {
                                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                 .scaleEffect(0.8)
                         }
-                        Text(isAddingEntry ? "Adding..." : "Add Cigarette")
+                        Text(isAddingEntry ? "Adding..." : "Add Smoke")
                             .font(.headline)
                     }
                     .padding()
