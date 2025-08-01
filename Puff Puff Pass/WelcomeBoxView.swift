@@ -15,11 +15,13 @@ struct WelcomeBoxView: View {
             ZStack {
                 // Main content
                 HStack(spacing: 16) {
-                    // Arrow pointing down - vertically centered
-                    Image(systemName: "arrow.down.circle.fill")
+                    // Animated icon - arrow down to checkmark
+                    Image(systemName: hasCigaretteHistory ? "checkmark.circle.fill" : "arrow.down.circle.fill")
                         .font(.system(size: 24))
                         .foregroundColor(.white)
                         .opacity(0.9)
+                        .rotationEffect(.degrees(hasCigaretteHistory ? 360 : 0))
+                        .animation(.easeInOut(duration: 0.6), value: hasCigaretteHistory)
                     
                     // Message - uses full available space
                     VStack(alignment: .leading, spacing: 4) {
@@ -28,12 +30,12 @@ struct WelcomeBoxView: View {
                             .foregroundColor(.white)
                         
                         Text(hasCigaretteHistory ? 
-                             "Log each cigarette to create patterns and plan your reduction strategy." :
+                             "Log each cigarette to spot patterns and plan better." :
                              "Tap below to log your first cigarette and start tracking.")
                             .font(.system(size: 12, weight: .regular))
                             .foregroundColor(.white.opacity(0.9))
                             .multilineTextAlignment(.leading)
-                            .lineLimit(3)
+                            .lineLimit(2)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -58,7 +60,7 @@ struct WelcomeBoxView: View {
 
 
 
-p0        .padding(.horizontal, 16)
+        .padding(.horizontal, 16)
     }
 }
 
