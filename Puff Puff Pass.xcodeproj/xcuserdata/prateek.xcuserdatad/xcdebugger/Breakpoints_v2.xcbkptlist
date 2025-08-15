@@ -728,6 +728,21 @@
                   endingLineNumber = "230"
                   offsetFromSymbolStart = "1076">
                </Location>
+               <Location
+                  uuid = "DA5A0983-83F1-4C3F-8887-26AEFF136E4C - 1d43eca7e99755e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Puff_Puff_Pass.CigrLoginView.handleAppleSignInError(Swift.Error) -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "230"
+                  endingLineNumber = "230"
+                  offsetFromSymbolStart = "1394">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -835,6 +850,21 @@
                   startingLineNumber = "232"
                   endingLineNumber = "232"
                   offsetFromSymbolStart = "1292">
+               </Location>
+               <Location
+                  uuid = "2A3647E5-F3D6-4A8A-81B6-26A0126564D6 - 1d43eca7e99755af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Puff_Puff_Pass.CigrLoginView.handleAppleSignInError(Swift.Error) -&gt; ()"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
+                  offsetFromSymbolStart = "1701">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -974,6 +1004,21 @@
                   endingLineNumber = "164"
                   offsetFromSymbolStart = "164">
                </Location>
+               <Location
+                  uuid = "085CB238-1F8E-4E5C-90A9-2CCC27F404A8 - 6de468f76c9f23d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; Swift.UInt8 in Puff_Puff_Pass.CigrLoginView.randomNonceString(length: Swift.Int) -&gt; Swift.String"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/CigrLoginView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "167">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1051,6 +1096,21 @@
                   startingLineNumber = "214"
                   endingLineNumber = "214"
                   offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "DDDFAABD-ED2C-4036-B42A-79FEBAD2591B - c7ab68168ad46961"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Puff_Puff_Pass.AuthManager.getUserProfile(userId: Foundation.UUID) async throws -&gt; Swift.Optional&lt;Puff_Puff_Pass.AuthManager.SupabaseUserInsert&gt;"
+                  moduleName = "Puff Puff Pass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/prateek/Projects/Puff%20Puff%20Pass/Puff%20Puff%20Pass/supabase/AuthManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "214"
+                  endingLineNumber = "214"
+                  offsetFromSymbolStart = "115">
                </Location>
             </Locations>
          </BreakpointContent>

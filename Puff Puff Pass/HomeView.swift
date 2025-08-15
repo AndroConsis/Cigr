@@ -28,6 +28,8 @@ struct HomeView: View {
     @State private var animatedCount: Int = 0
     @State private var isAddingEntry = false
     @State private var showWelcomeBox = false
+    @State private var showReasonSelection = false
+    @State private var lastLoggedReason: SmokingReason?
     
     @StateObject private var dataStore = CigaretteDataStore.shared
     @StateObject private var userManager = UserManager.shared
@@ -139,9 +141,14 @@ struct HomeView: View {
                                 // Hide welcome box after first cigarette is logged
                                 if showWelcomeBox {
                                     withAnimation(.easeInOut(duration: 0.3)) {
+                                        showWelcomeBox = false
                                         hasShownWelcomeBox = true
                                     }
                                 }
+                                
+                                // Show reason selection after cigarette is logged
+                                print("🎯 [HOME VIEW] Showing reason selection")
+                                showReasonSelection = true
                             }
                             isAddingEntry = false
                         }
@@ -216,6 +223,24 @@ struct HomeView: View {
                     }
                 })
             }
+            .overlay(
+                // Reason Selection Modal
+                Group {
+                    if showReasonSelection {
+                        ReasonSelectionView { reason in
+                            lastLoggedReason = reason
+                            showReasonSelection = false
+                            
+                            // Optional: Show feedback for selected reason
+                            if let reason = reason {
+                                print("Selected reason: \(reason.title)")
+                            } else {
+                                print("No reason selected (skipped)")
+                            }
+                        }
+                    }
+                }
+            )
             .navigationDestination(for: NavigationPage.self) { page in
                 switch page {
                 case .statistics:
@@ -247,6 +272,9 @@ struct HomeView: View {
                 }
             }
             .refreshable {
+                // Disable refresh when reason selection is active
+                guard !showReasonSelection else { return }
+                
                 await userManager.refreshUserProfile()
                 await dataStore.refresh()
                 await MainActor.run {
