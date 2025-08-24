@@ -4,11 +4,13 @@ struct CigaretteEntry: Codable, Identifiable {
     let id: UUID
     let userId: UUID
     let timestamp: Date
+    let reason: String?
 
     enum CodingKeys: String, CodingKey {
         case id
         case userId = "user_id"
         case timestamp = "smoked_at"
+        case reason
     }
 }
 
@@ -231,9 +233,12 @@ struct HomeView: View {
                             lastLoggedReason = reason
                             showReasonSelection = false
                             
-                            // Optional: Show feedback for selected reason
+                            // Update the most recent cigarette entry with the selected reason
                             if let reason = reason {
                                 print("Selected reason: \(reason.title)")
+                                Task {
+                                    await updateLastEntryWithReason(reason.title)
+                                }
                             } else {
                                 print("No reason selected (skipped)")
                             }
@@ -337,6 +342,40 @@ struct HomeView: View {
 
     // MARK: - REMOVED DUPLICATE METHODS
     // Removed saveEntries() and loadEntries() as they duplicate viewModel functionality
+    
+    // Update the most recent cigarette entry with the selected reason
+    func updateLastEntryWithReason(_ reason: String) async {
+        guard let mostRecentEntry = mostRecentEntry else {
+            print("❌ [HOME VIEW] No recent entry found to update")
+            return
+        }
+        
+        do {
+            print("🔄 [HOME VIEW] Updating entry \(mostRecentEntry.id) with reason: \(reason)")
+            
+            // Update the entry in the database
+            try await SupabaseManager.shared.client
+                .from("cigarette_entries")
+                .update(["reason": reason])
+                .eq("id", value: mostRecentEntry.id.uuidString)
+                .execute()
+            
+            // Update the local entry
+            if let index = dataStore.allEntries.firstIndex(where: { $0.id == mostRecentEntry.id }) {
+                dataStore.allEntries[index] = CigaretteEntry(
+                    id: mostRecentEntry.id,
+                    userId: mostRecentEntry.userId,
+                    timestamp: mostRecentEntry.timestamp,
+                    reason: reason
+                )
+            }
+            
+            print("✅ [HOME VIEW] Successfully updated entry with reason")
+            
+        } catch {
+            print("❌ [HOME VIEW] Failed to update entry with reason: \(error.localizedDescription)")
+        }
+    }
 }
 
 // MARK: - StatCard View - FIXED

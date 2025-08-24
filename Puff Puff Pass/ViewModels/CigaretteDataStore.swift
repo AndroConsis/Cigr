@@ -47,7 +47,7 @@ class CigaretteDataStore: ObservableObject {
     }
     
     // MARK: - Add Entry
-    func addEntry() async {
+    func addEntry(reason: String? = nil) async {
         errorMessage = nil
         do {
             guard let userId = AuthManager.shared.getCurrentUser()?.id else {
@@ -56,7 +56,8 @@ class CigaretteDataStore: ObservableObject {
             let newEntry = CigaretteEntry(
                 id: UUID(),
                 userId: userId,
-                timestamp: Date()
+                timestamp: Date(),
+                reason: reason
             )
             let response: [CigaretteEntry] = try await SupabaseManager.shared.client
                 .from("cigarette_entries")

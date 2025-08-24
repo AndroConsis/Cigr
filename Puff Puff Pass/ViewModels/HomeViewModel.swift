@@ -92,7 +92,8 @@ class HomeViewModel: ObservableObject {
             let newEntry = CigaretteEntry(
                 id: UUID(),
                 userId: userId,
-                timestamp: Date()
+                timestamp: Date(),
+                reason: nil
             )
             
             let startTime = CFAbsoluteTimeGetCurrent()
