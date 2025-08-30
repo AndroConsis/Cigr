@@ -7,26 +7,38 @@ class CigaretteDataStore: ObservableObject {
     
     @Published var allEntries: [CigaretteEntry] = []
     @Published var isLoading = false
+    @Published var isLoadingMore = false
     @Published var errorMessage: String?
+    @Published var hasMoreData = true
+    
+    private var currentPage = 0
+    private let pageSize = 20
     
     private init() {}
     
-    // MARK: - Load Entries
+    // MARK: - Load Entries (Initial Load)
     func loadEntries() async {
         isLoading = true
         errorMessage = nil
+        currentPage = 0
+        
         do {
             guard let userId = AuthManager.shared.getCurrentUser()?.id else {
                 throw DataStoreError.userNotFound
             }
+            
             let response: [CigaretteEntry] = try await SupabaseManager.shared.client
                 .from("cigarette_entries")
                 .select()
                 .eq("user_id", value: userId.uuidString)
                 .order("smoked_at", ascending: false)
+                .range(from: 0, to: pageSize - 1)
                 .execute()
                 .value
+            
             self.allEntries = response
+            self.hasMoreData = response.count >= pageSize
+            
         } catch let error as PostgrestError {
             self.errorMessage = "Failed to load entries: \(error.message)"
         } catch let error as URLError {
@@ -44,6 +56,53 @@ class CigaretteDataStore: ObservableObject {
             self.errorMessage = "An unexpected error occurred. Please try again."
         }
         isLoading = false
+    }
+    
+    // MARK: - Load More Entries (Pagination)
+    func loadMoreEntries() async {
+        guard !isLoadingMore && hasMoreData else { return }
+        
+        isLoadingMore = true
+        errorMessage = nil
+        
+        do {
+            guard let userId = AuthManager.shared.getCurrentUser()?.id else {
+                throw DataStoreError.userNotFound
+            }
+            
+            let from = (currentPage + 1) * pageSize
+            let to = from + pageSize - 1
+            
+            let response: [CigaretteEntry] = try await SupabaseManager.shared.client
+                .from("cigarette_entries")
+                .select()
+                .eq("user_id", value: userId.uuidString)
+                .order("smoked_at", ascending: false)
+                .range(from: from, to: to)
+                .execute()
+                .value
+            
+            self.allEntries.append(contentsOf: response)
+            self.currentPage += 1
+            self.hasMoreData = response.count >= pageSize
+            
+        } catch let error as PostgrestError {
+            self.errorMessage = "Failed to load more entries: \(error.message)"
+        } catch let error as URLError {
+            switch error.code {
+            case .timedOut:
+                self.errorMessage = "Request timed out. Please try again."
+            case .notConnectedToInternet:
+                self.errorMessage = "No internet connection. Please check your network."
+            default:
+                self.errorMessage = "Network error. Please try again."
+            }
+        } catch DataStoreError.userNotFound {
+            self.errorMessage = "Please log in to view your entries."
+        } catch {
+            self.errorMessage = "An unexpected error occurred. Please try again."
+        }
+        isLoadingMore = false
     }
     
     // MARK: - Add Entry

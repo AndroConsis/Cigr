@@ -14,17 +14,12 @@ struct CigaretteEntry: Codable, Identifiable {
     }
 }
 
-enum NavigationPage: Hashable {
-    case statistics
-}
-
 struct HomeView: View {
     @AppStorage("lastSmokedTime") private var lastSmokedTime: Double = Date().timeIntervalSince1970
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     @AppStorage("hasShownWelcomeBox") private var hasShownWelcomeBox = false
     
     @State private var showProfile = false
-    @State private var selectedPage: NavigationPage?
     @State private var todayCount = 0
     @State private var allEntries: [CigaretteEntry] = []
     @State private var animatedCount: Int = 0
@@ -191,7 +186,7 @@ struct HomeView: View {
                 }
                 .padding(.horizontal)
 
-                NavigationLink(value: NavigationPage.statistics) {
+                NavigationLink(destination: StatisticsView()) {
                     HStack {
                         Image(systemName: "chart.bar.xaxis")
                         Text("Statistics")
@@ -200,6 +195,19 @@ struct HomeView: View {
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color.blue.opacity(0.1))
+                    .cornerRadius(12)
+                }
+                .padding(.horizontal)
+
+                NavigationLink(destination: CigaretteLogView()) {
+                    HStack {
+                        Image(systemName: "list.bullet.clipboard")
+                        Text("View Log")
+                            .font(.headline)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.orange.opacity(0.1))
                     .cornerRadius(12)
                 }
                 .padding(.horizontal)
@@ -246,12 +254,7 @@ struct HomeView: View {
                     }
                 }
             )
-            .navigationDestination(for: NavigationPage.self) { page in
-                switch page {
-                case .statistics:
-                    StatisticsView()
-                }
-            }
+
             .onAppear {
                 Task {
                     // Load user profile first

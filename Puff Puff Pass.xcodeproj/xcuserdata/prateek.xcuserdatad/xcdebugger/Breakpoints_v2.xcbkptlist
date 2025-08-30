@@ -627,7 +627,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DA5A0983-83F1-4C3F-8887-26AEFF136E4C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Puff Puff Pass/CigrLoginView.swift"
@@ -750,7 +750,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "2A3647E5-F3D6-4A8A-81B6-26A0126564D6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Puff Puff Pass/CigrLoginView.swift"
