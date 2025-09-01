@@ -77,7 +77,81 @@ struct ProfileSheet: View {
                             }
                         }
                         
+                        // Currency Information
+                        if let currentCurrency = userManager.currentCurrencyInfo {
+                            HStack {
+                                Image(systemName: "dollarsign.circle")
+                                    .foregroundColor(.blue)
+                                Text("Currency: \(currentCurrency.name) (\(currentCurrency.symbol))")
+                                    .font(.footnote)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        
                         Spacer()
+                        
+                        // Settings Section
+                        VStack(spacing: 12) {
+                            Text("Settings")
+                                .font(.headline)
+                                .foregroundColor(.primary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
+                            
+                            // Currency Settings Button
+                            NavigationLink(destination: CurrencySettingsView()) {
+                                HStack(spacing: 12) {
+                                    Image(systemName: "dollarsign.circle")
+                                        .font(.system(size: 16, weight: .medium))
+                                        .foregroundColor(.blue)
+                                    
+                                    Text("Currency Settings")
+                                        .font(.system(size: 16, weight: .medium))
+                                        .foregroundColor(.primary)
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 14, weight: .medium))
+                                        .foregroundColor(.gray)
+                                }
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 16)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(Color(.systemGray6))
+                                )
+                                .padding(.horizontal)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            // Price Settings Button
+                            NavigationLink(destination: PriceSettingsView()) {
+                                HStack(spacing: 12) {
+                                    Image(systemName: "creditcard.circle")
+                                        .font(.system(size: 16, weight: .medium))
+                                        .foregroundColor(.green)
+                                    
+                                    Text("Price Settings")
+                                        .font(.system(size: 16, weight: .medium))
+                                        .foregroundColor(.primary)
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 14, weight: .medium))
+                                        .foregroundColor(.gray)
+                                }
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 16)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(Color(.systemGray6))
+                                )
+                                .padding(.horizontal)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
                         
                         VStack(spacing: 16) {
                             // Divider

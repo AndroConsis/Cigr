@@ -294,14 +294,28 @@ struct HomeView: View {
         }
     }
 
-    // FIXED: Better currency formatting
+    // FIXED: Better currency formatting with currency detection
     func formattedSpent() -> String {
-        guard totalSpent > 0 else { return "₹0" }
+        guard totalSpent > 0 else { 
+            return userManager.currentCurrencyInfo?.symbol ?? "$" + "0"
+        }
         
-        if totalSpent.truncatingRemainder(dividingBy: 1) == 0 {
-            return "₹\(Int(totalSpent))"
+        // Check if the decimal part is zero
+        let isWholeNumber = totalSpent.truncatingRemainder(dividingBy: 1) == 0
+        
+        if isWholeNumber {
+            // For whole numbers, show without decimal places
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.currencyCode = userManager.currentCurrencyInfo?.code ?? "USD"
+            formatter.currencySymbol = userManager.currentCurrencyInfo?.symbol ?? "$"
+            formatter.minimumFractionDigits = 0
+            formatter.maximumFractionDigits = 0
+            
+            return formatter.string(from: NSNumber(value: totalSpent)) ?? "\(userManager.currentCurrencyInfo?.symbol ?? "$")\(Int(totalSpent))"
         } else {
-            return String(format: "₹%.2f", totalSpent)
+            // For decimal numbers, show with 2 decimal places
+            return CurrencyManager.shared.formatPrice(totalSpent)
         }
     }
 
