@@ -39,7 +39,8 @@ struct HomeView: View {
     }
 
     private var totalCigarettes: Int {
-        dataStore.allEntries.count
+        // Use backend all-time count when available; otherwise fall back to local list count
+        return dataStore.totalCount > 0 ? dataStore.totalCount : dataStore.allEntries.count
     }
 
     private var totalPacks: Int {
@@ -48,10 +49,13 @@ struct HomeView: View {
     }
 
     private var totalSpent: Double {
-        guard let userProfile = userManager.userProfile,
-              userProfile.price_per_cigarette > 0,
-              totalCigarettes > 0 else { return 0.0 }
-        return Double(totalCigarettes) * userProfile.price_per_cigarette
+        guard totalCigarettes > 0 else { return 0.0 }
+        // Prefer the user's current/effective price if set; fall back to profile value
+        let effectivePricePerCig = userManager.userCigarettePrice > 0
+            ? userManager.userCigarettePrice
+            : (userManager.userProfile?.price_per_cigarette ?? 0)
+        guard effectivePricePerCig > 0 else { return 0.0 }
+        return Double(totalCigarettes) * effectivePricePerCig
     }
     
     // Get the most recent cigarette entry (not just today's)
@@ -262,6 +266,7 @@ struct HomeView: View {
                     
                     // Then load cigarette entries
                     await dataStore.loadEntries()
+                    await dataStore.loadTotalCount()
                     
                     // Animate count after entries are loaded
                     await MainActor.run {
@@ -285,6 +290,7 @@ struct HomeView: View {
                 
                 await userManager.refreshUserProfile()
                 await dataStore.refresh()
+                await dataStore.loadTotalCount()
                 await MainActor.run {
                     if dataStore.errorMessage == nil {
                         animateCount(to: todayEntries.count)

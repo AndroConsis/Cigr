@@ -10,6 +10,7 @@ class CigaretteDataStore: ObservableObject {
     @Published var isLoadingMore = false
     @Published var errorMessage: String?
     @Published var hasMoreData = true
+    @Published var totalCount: Int = 0
     
     private var currentPage = 0
     private let pageSize = 20
@@ -56,6 +57,30 @@ class CigaretteDataStore: ObservableObject {
             self.errorMessage = "An unexpected error occurred. Please try again."
         }
         isLoading = false
+    }
+
+    // MARK: - Load All-time Count
+    func loadTotalCount() async {
+        do {
+            guard let userId = AuthManager.shared.getCurrentUser()?.id else {
+                throw DataStoreError.userNotFound
+            }
+            let response = try await SupabaseManager.shared.client
+                .from("cigarette_entries")
+                .select("id", head: true, count: .exact)
+                .eq("user_id", value: userId.uuidString)
+                .execute()
+            self.totalCount = response.count ?? 0
+        } catch let error as PostgrestError {
+            self.errorMessage = "Failed to load total count: \(error.message)"
+            self.totalCount = 0
+        } catch DataStoreError.userNotFound {
+            self.errorMessage = "Please log in to view your total count."
+            self.totalCount = 0
+        } catch {
+            self.errorMessage = "An unexpected error occurred while loading total count."
+            self.totalCount = 0
+        }
     }
     
     // MARK: - Load More Entries (Pagination)
